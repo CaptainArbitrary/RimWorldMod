@@ -95,6 +95,8 @@ jobs:
         contents: "Release ${{ steps.increment-version.outputs.version }}\n\n${{ steps.update-changelog-txt.outputs.changelog }}"
 
     - run: echo -e "$(cat CHANGELOG.txt.temp)\n\n$(cat CHANGELOG.txt)" > CHANGELOG.txt
+    - run: awk -v RS= -v ORS='\n\n' '1' CHANGELOG.txt > CHANGELOG.txt.temp
+    - run: mv CHANGELOG.txt.temp CHANGELOG.txt
 
     - run: git add CHANGELOG.txt
 
@@ -116,6 +118,8 @@ jobs:
         contents: "[h1]Release ${{ steps.increment-version.outputs.version }}[/h1]\n\n${{ steps.update-changelog-bbcode.outputs.changelog }}"
 
     - run: echo -e "$(cat CHANGELOG.bbcode.temp)\n\n$(cat CHANGELOG.bbcode)" > CHANGELOG.bbcode
+    - run: awk -v RS= -v ORS='\n\n' '1' CHANGELOG.bbcode > CHANGELOG.bbcode.temp
+    - run: mv CHANGELOG.bbcode.temp CHANGELOG.bbcode
 
     - run: git add CHANGELOG.bbcode
 
@@ -137,6 +141,8 @@ jobs:
         contents: "## Release ${{ steps.increment-version.outputs.version }}\n\n${{ steps.update-changelog-md.outputs.changelog }}"
 
     - run: echo -e "$(cat CHANGELOG.md.temp)\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
+    - run: awk -v RS= -v ORS='\n\n' '1' CHANGELOG.md > CHANGELOG.md.temp
+    - run: mv CHANGELOG.md.temp CHANGELOG.md
 
     - run: git add CHANGELOG.md
 
