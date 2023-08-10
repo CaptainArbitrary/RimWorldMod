@@ -1,0 +1,11 @@
+<ModMetaData>
+  <packageId>CaptainArbitrary.RimWorldMod</packageId>
+  <name>RimWorld Mod</name>
+  <author>CaptainArbitrary</author>
+  <description/>
+  <modVersion/>
+  <url>https://github.com/CaptainArbitrary/RimWorldMod</url>
+  <supportedVersions>
+    <li>1.4</li>
+  </supportedVersions>
+</ModMetaData>
