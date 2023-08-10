@@ -18,6 +18,6 @@
     "on_property": "mergedAt"
   },
   "template": "${{CHANGELOG}}",
-  "pr_template": "**${{TITLE}}** ([PR #${{NUMBER}}](${{URL}}))\n\n${{BODY}}",
+  "pr_template": "**${{TITLE}}** ([PR #${{NUMBER}}](${{URL}}))\n\n${{BODY}}\n\n",
   "empty_template": "_No changes._"
 }
