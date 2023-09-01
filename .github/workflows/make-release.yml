@@ -66,6 +66,8 @@ jobs:
       with:
         args: ed -P -O -L --update "/Project/PropertyGroup[1]/AssemblyVersion" -v "${{ steps.increment-version.outputs.version }}.0" "${{ vars.CSPROJ_PATH }}"
 
+    - run: git add ${{ vars.CSPROJ_PATH }}
+
     - uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
