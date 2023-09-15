@@ -82,20 +82,27 @@ jobs:
         configuration: ".github/workflows/changelog.json"
         fromTag: ${{ env.PREVIOUS_TAG }}
         toTag: ${{ github.ref }}
+        outputFile: CHANGELOG.md.new
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - run: cat CHANGELOG.md.new
+
+    - run: awk -v RS= -v ORS='\n\n' '1' CHANGELOG.md.new > CHANGELOG.md.new.tmp && mv CHANGELOG.md.new.tmp CHANGELOG.md.new
+
+    - run: cat CHANGELOG.md.new
+
 #endregion
 
-#region Update CHANGELOG.md
-    - uses: DamianReeves/write-file-action@v1.2
-      with:
-        path: CHANGELOG.md.temp
-        write-mode: overwrite
-        contents: "## Release ${{ env.VERSION_STRING }}\n\n${{ steps.update-changelog.outputs.changelog }}"
 
-    - run: echo -e "$(cat CHANGELOG.md.temp)\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
-    - run: awk -v RS= -v ORS='\n\n' '1' CHANGELOG.md > CHANGELOG.md.temp
-    - run: mv CHANGELOG.md.temp CHANGELOG.md
+#region Update CHANGELOG.md
+    - run: echo -e "$(cat CHANGELOG.md.new)\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
+
+    - run: cat CHANGELOG.md
+
+    - run: awk -v RS= -v ORS='\n\n' '1' CHANGELOG.md > CHANGELOG.md.tmp && mv changelog.md.tmp CHANGELOG.md
+
+    - run: cat CHANGELOG.md
 
     - run: git add CHANGELOG.md
 
