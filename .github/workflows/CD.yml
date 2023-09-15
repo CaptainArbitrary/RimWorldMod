@@ -22,6 +22,8 @@ jobs:
       with:
         fetch-depth: 0
 
+    - uses: fregante/setup-git-user@v2
+
     - uses: falti/dotenv-action@v1.0.4
       with:
         keys-case: bypass
@@ -32,6 +34,10 @@ jobs:
     - run: |
         PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^) || PREVIOUS_TAG=$(git rev-list --max-parents=0 HEAD)
         echo "PREVIOUS_TAG=$PREVIOUS_TAG" >> $GITHUB_ENV
+#endregion
+
+#region Create release branch
+    - run: git checkout -b "release/${{ env.VERSION_STRING }}"
 #endregion
 
 #region Lint all XML files
