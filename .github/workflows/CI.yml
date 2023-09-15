@@ -5,10 +5,6 @@ on:
     branches:
       - '**'
 
-concurrency:
-  group: "CI-${{ github.ref }}"
-  cancel-in-progress: false
-
 jobs:
   CI:
     runs-on: ubuntu-latest
