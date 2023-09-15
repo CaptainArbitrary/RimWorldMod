@@ -57,18 +57,15 @@ jobs:
       run: xmllint --noout ${{ steps.glob.outputs.paths }}
 #endregion
 
-#region Build the assembly
+#region Build and commit the assembly
     - if: env.SLN_PATH != ''
       run: dotnet restore ${{ env.SLN_PATH }}
 
     - if: env.SLN_PATH != ''
       run: dotnet build ${{ env.SLN_PATH }} --configuration Release --no-restore
-#endregion
 
-#region Create release branch
-    - uses: fregante/setup-git-user@v2
-
-    - run: git checkout -b "release/${{ env.VERSION_STRING }}"
+    - run: git add ${{ env.ASSEMBLY_PATH }}
+    - run: git commit -m "Build ${{ env.ASSEMBLY_PATH }} for ${{ env.VERSION_STRING }}"
 #endregion
 
 #region Increment mod version
