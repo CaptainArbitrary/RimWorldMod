@@ -117,7 +117,7 @@ jobs:
 
 #region Create and merge pull request
     - id: create-pull-request
-      run: gh pr create --title "Release ${{ env.VERSION_STRING }}" --body "" --base "${{ github.event.base_ref }}" --head "release/${{ env.VERSION_STRING }}" --label "release"
+      run: gh pr create --title "Release ${{ env.VERSION_STRING }}" --body-file CHANGELOG.md.new --base "${{ github.event.base_ref }}" --head "release/${{ env.VERSION_STRING }}" --label "release"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -140,7 +140,7 @@ jobs:
 #endregion
 
 #region Create release
-    - run: gh release create ${{ github.ref_name }} "${{ env.MOD_NAME }}-${{ env.VERSION_STRING }}.zip" --title "${{ env.VERSION_STRING }}" --notes "${{ steps.update-changelog.outputs.changelog }}"
+    - run: gh release create ${{ github.ref_name }} "${{ env.MOD_NAME }}-${{ env.VERSION_STRING }}.zip" --title "${{ env.VERSION_STRING }}" --notes-file CHANGELOG.md.new
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #endregion
