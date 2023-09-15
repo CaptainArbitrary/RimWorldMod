@@ -1,4 +1,4 @@
-name: "pr-label"
+name: "PR Require Label"
 
 on:
   pull_request:
@@ -7,11 +7,11 @@ on:
 
 concurrency:
   group: "pr-label-${{ github.ref }}"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
 
-  pr-label:
+  pr-require-label:
 
     runs-on: ubuntu-latest
     permissions:
