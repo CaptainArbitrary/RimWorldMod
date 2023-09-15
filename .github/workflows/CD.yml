@@ -100,7 +100,7 @@ jobs:
 
     - run: cat CHANGELOG.md
 
-    - run: awk -v RS= -v ORS='\n\n' '1' CHANGELOG.md > CHANGELOG.md.tmp && mv changelog.md.tmp CHANGELOG.md
+    - run: awk -v RS= -v ORS='\n\n' '1' CHANGELOG.md > CHANGELOG.md.tmp && mv CHANGELOG.md.tmp CHANGELOG.md
 
     - run: cat CHANGELOG.md
 
