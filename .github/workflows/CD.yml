@@ -30,7 +30,7 @@ jobs:
     - run: echo "VERSION_STRING=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
     - run: |
-        PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^)
+        PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^) || PREVIOUS_TAG=$(git rev-list --max-parents=0 HEAD)
         echo "PREVIOUS_TAG=$PREVIOUS_TAG" >> $GITHUB_ENV
 #endregion
 
