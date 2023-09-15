@@ -110,7 +110,7 @@ jobs:
 
 #region Create and merge pull request
     - id: create-pull-request
-      run: gh pr create --title "Release ${{ env.VERSION_STRING }}" --body "${{ steps.update-changelog.outputs.changelog }}" --base "${{ github.event.base_ref }}" --head "release/${{ env.VERSION_STRING }}" --label "release"
+      run: gh pr create --title "Release ${{ env.VERSION_STRING }}" --base "${{ github.event.base_ref }}" --head "release/${{ env.VERSION_STRING }}" --label "release"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
