@@ -2,8 +2,13 @@ name: PR Require Label
 
 on:
   pull_request:
-    types: [ opened, labeled, unlabeled, synchronize ]
-    branches: [ main ]
+    types:
+      - opened
+      - labeled
+      - unlabeled
+      - synchronize
+    branches:
+      - main
 
 jobs:
   pr-require-label:
