@@ -11,4 +11,7 @@ concurrency:
 
 jobs:
   cd:
+    permissions:
+      contents: write
+      pull-requests: write
     uses: CaptainArbitrary/workflows/.github/workflows/cd.yml@main
