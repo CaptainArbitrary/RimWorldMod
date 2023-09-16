@@ -9,4 +9,4 @@ jobs:
   pr-require-label:
     permissions:
       pull-requests: write
-    uses: CaptainArbitrary/workflows/.github/workflows/PR-Require-Label.yml@PR-Require-Label
+    uses: CaptainArbitrary/workflows/.github/workflows/pr-require-label.yml@main

@@ -7,4 +7,4 @@ on:
 
 jobs:
   ci:
-    uses: CaptainArbitrary/workflows/.github/workflows/CI.yml@CI
+    uses: CaptainArbitrary/workflows/.github/workflows/ci.yml@main
