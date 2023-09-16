@@ -1,4 +1,4 @@
-name: "CI"
+name: CI
 
 on:
   push:
@@ -6,5 +6,5 @@ on:
       - '**'
 
 jobs:
-  CI:
+  ci:
     uses: CaptainArbitrary/workflows/.github/workflows/CI.yml@CI
