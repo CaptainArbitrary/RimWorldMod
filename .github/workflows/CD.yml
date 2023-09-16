@@ -89,7 +89,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - run: echo -e "## Release ${{ env.VERSION_STRING }}\n\n $(cat CHANGELOG.md.new)" > CHANGELOG.md.new.tmp && mv CHANGELOG.md.new.tmp CHANGELOG.md.new
+    - run: echo -e "## Release ${{ env.VERSION_STRING }}\n\n$(cat CHANGELOG.md.new)" > CHANGELOG.md.new.tmp && mv CHANGELOG.md.new.tmp CHANGELOG.md.new
     - run: awk -v RS= -v ORS='\n\n' '1' CHANGELOG.md.new > CHANGELOG.md.new.tmp && mv CHANGELOG.md.new.tmp CHANGELOG.md.new
 #endregion
 
